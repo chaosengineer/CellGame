@@ -1,0 +1,10 @@
+{
+	vec directionToClosestCell;
+	directionToClosestCell = #Position[1] - #Position[0];
+	
+	if (#Radius[1] < #Radius[0]) {
+		#Force = directionToClosestCell - #Velocity[0];
+	} else {
+		#Force = -directionToClosestCell;
+	}
+}

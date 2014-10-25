@@ -1,0 +1,14 @@
+levelSeed 0
+playerScriptPath .\dummy.txt
+tickLength 0.005
+arenaCenter 0.0 0.0
+arenaRadius 1.0
+cellCount 128
+cellDensity 100.0
+cellMinimumRadius 0.005
+cellMaximumRadius 0.02
+cellVelocityVariance 0.2
+playerCellInitialRadius 0.01
+displayResolution 640
+exitOnSimulationFinished 1
+baseModulePath .\base.bc

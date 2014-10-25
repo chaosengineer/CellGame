@@ -1,0 +1,41 @@
+{
+	int closestSmallCellIndex;
+	closestSmallCellIndex = -1;
+	
+	int closestLargeCellIndex;
+	closestLargeCellIndex = -1;
+	
+	int cellIndex;
+	cellIndex = 1;
+	
+	while ((cellIndex < #CellCount) && ((closestSmallCellIndex == -1) || (closestLargeCellIndex == -1))) {
+		if (#Radius[cellIndex] < #Radius[0]) {
+			if (closestSmallCellIndex == -1) {
+				closestSmallCellIndex = cellIndex;
+			}
+		} else {
+			if (closestLargeCellIndex == -1) {
+				closestLargeCellIndex = cellIndex;
+			}
+		}
+		
+		cellIndex = cellIndex + 1;
+	}
+	
+	vec directionToSmallerCell;
+	directionToSmallerCell = makeVec(0.0f, 0.0f);
+	
+	if (closestSmallCellIndex != -1) {
+		directionToSmallerCell = #Position[closestSmallCellIndex] - #Position[0];
+		directionToSmallerCell = directionToSmallerCell + #Velocity[closestSmallCellIndex];
+	}
+
+	vec directionToLargerCell;
+	directionToLargerCell = makeVec(0.0f, 0.0f);
+	
+	if (closestLargeCellIndex != -1) {
+		directionToLargerCell = #Position[closestLargeCellIndex] - #Position[0];
+	}
+	
+	#Force = (directionToSmallerCell - directionToLargerCell) - #Velocity[0];
+}

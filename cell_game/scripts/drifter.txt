@@ -1,0 +1,19 @@
+{
+	vec directionToClosestCell;
+	directionToClosestCell = #Position[1] - #Position[0];
+
+	if (#Radius[1] < #Radius[0]) {		
+		vec unitDirectionToClosestCell;
+		unitDirectionToClosestCell = directionToClosestCell.normalized;
+		
+		vec unitCurrentMovingDirection;
+		unitCurrentMovingDirection = #Velocity[0].normalized;
+		
+		real angleToClosestCell;
+		angleToClosestCell = unitDirectionToClosestCell ^ unitCurrentMovingDirection;
+		
+		#Force = directionToClosestCell - (1.0f - angleToClosestCell) * #Velocity[0];
+	} else {
+		#Force = -directionToClosestCell;
+	}
+}
